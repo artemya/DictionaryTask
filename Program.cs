@@ -10,6 +10,7 @@ namespace DictionaryTask
         {
             string[] phrases = {"Little red fox Likes red box Red box is Big", "Big dog is scary"};
             var dictionary = CountWordFrequence(phrases);
+            Console.WriteLine("There is a record: {0} ", dictionary.Count == 0 ? "FAILURE" : "OK");
             foreach (KeyValuePair<string, int> keyValue in dictionary) {
                 Console.WriteLine(keyValue.Key + " - " + keyValue.Value);
             }
@@ -17,6 +18,9 @@ namespace DictionaryTask
 
         static public Dictionary<string, int> CountWordFrequence(string[] phrases)
         {
+            if (phrases.Length == 0){
+                return new Dictionary<string, int>();
+            }
             string[] words = {};
             string temp = "";
             foreach(string phrase in phrases) {
@@ -32,8 +36,7 @@ namespace DictionaryTask
                 foreach(string word in words) {
                     if(dWord == word){
                         i += 1;
-                    }
-                    
+                    } 
                 }
                 // Console.WriteLine(i);
                 dictionary.Add(dWord, i);
